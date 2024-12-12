@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/ohlmeier/youtube-cli/cmd/channels"
 	"github.com/spf13/cobra"
 )
 
@@ -21,4 +22,8 @@ func Execute() {
 	if err != nil {
 		os.Exit(1)
 	}
+}
+
+func init() {
+	rootCmd.AddCommand(channels.ListCmd)
 }

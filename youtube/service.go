@@ -15,7 +15,9 @@ var Service *youtube.Service
 func init() {
 	ctx := context.Background()
 	apiKey := os.Getenv("API_KEY")
-	log.Println(apiKey)
+	if apiKey == "" {
+		log.Fatal("API Key missing")
+	}
 	youtubeService, err := youtube.NewService(ctx, option.WithAPIKey(apiKey))
 	errors.Handle(err, "Error creating YouTube service")
 	Service = youtubeService
